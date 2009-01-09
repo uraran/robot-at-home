@@ -1,0 +1,28 @@
+Initial release of the code I use to run the robot so far.
+Some implementations are a bit cheesy but they work fine for me, for now.
+
+
+Kickstart:
+
+1. Try to compile everything using the buildall.sh script.
+2. Goto the bin directory and test the ctllauncher driver.
+   Try "sudo ./ctllauncher" after connecting the thing to your usb port.
+   You should get two numbers telling you the sensor status, or an error message.
+   Now try "sudo ctllauncher 5" to turn two motors on. Stop them with "sudo ctllauncher 0".
+3. Try the uvccapture with "./uvccapture" or "./uvccapture -m" and check the snap.jpg.
+   If this doesn't create the snap.jpg usw "./uvccapture -h" and help yourself.
+4. Try the Java UsbController class with "sudo java UsbController"
+   and enter something like "wwwwaaaassssddddq" in the console and press enter.
+   Your robot should now make a little dance ;-P
+5. Go for it and try "sudo java WebBot"! Then connect to http://localhost:8181
+
+PS: You need to install espeak for the tts-feature. "sudo apt-get install espeak"
+
+
+If you want to contribute feel free to contact me through one of the following adresses:
+
+http://nexno.blogspot.com/
+http://code.google.com/p/robot-at-home/
+nexusnoesis@googlemail.com
+
+License: GPL
