@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"" http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head><title>WebBot</title></head>
+<body style="background:black">
+<script type="text/javascript" language="JavaScript1.1"><!--
+var picurl="cam.jpg";
+var mypic=new Image();
+var ctrl=false;
+function exchange(){document.campic.src=mypic.src; preload();}
+function preload(){mypic=new Image(); mypic.src=picurl+"?"+new Date().getTime();}
+function trigger(){if(mypic.complete)exchange(); setTimeout("trigger()",200);}
+function init(){preload(); trigger();}
+function zoom(factor){document.campic.width*=factor; document.campic.height*=factor;}
+function rcstop(){ajax("rc?q");}
+function rcforward(){ajax("rc?w");}
+function rcleft(){ajax("rc?a");}
+function rcbackward(){ajax("rc?s");}
+function rcright(){ajax("rc?d");}
+function rcspeak(t){ajax("rcs?"+t);}
+function keyController(e){
+	if(e.value=="q")rcstop();
+	else if(e.value=="w")rcforward();
+	else if(e.value=="a")rcleft();
+	else if(e.value=="s")rcbackward();
+	else if(e.value=="d")rcright();
+	e.value="";
+}
+function speakController(e){
+	var t=e.value;e.value="";
+	t=t.replace(/\?/g,".");
+	if(t.length>0)rcspeak(t);
+}
+function ajax(url,cbf){
+  var xh;
+  try{xh=new XMLHttpRequest();}catch(e){
+  try{xh=new ActiveXObject("Msxml2.XMLHTTP");}catch(e){
+  try{xh=new ActiveXObject("Microsoft.XMLHTTP");}catch(e){
+  alert("YOU NEED AJAX!");return false;}}}
+  try{
+	xh.onreadystatechange=function(){if(xh.readyState==4&&cbf)cbf(xh.responseText);}
+	xh.open("GET",url,true);
+	xh.send(null);
+  }catch(e){return false;}
+}
+init();
+// --></script><noscript>YOU NEED JAVASCRIPT!</noscript>
+<table border=1 cellpadding=0 cellspacing=0 style="margin:auto"><tr>
+<td align="center"><!-- controls -->
+  <input type="button" value="zoom +" onclick="zoom(1.1)" style="width:75px;background:#666;"><br>
+  <input type="button" value="zoom -" onclick="zoom(0.9)" style="width:75px;background:#666;"><hr>
+  <input type="button" value="Q" onclick="rcstop()" style="width:25px;background:#966;">
+  <input type="button" value="W" onclick="rcforward()" style="width:25px;background:#966;">
+  <input type="text" onKeyUp="keyController(this)" value="" style="width:25px;background:#000;color:#0F0;" title="type in here to use keyboard for control"><br>
+  <input type="button" value="A" onclick="rcleft()" style="width:25px;background:#966;">
+  <input type="button" value="S" onclick="rcbackward()" style="width:25px;background:#966;">
+  <input type="button" value="D" onclick="rcright()" style="width:25px;background:#966;"><hr>
+  <span style="color:#696">speakbox:</span><br>
+  <input type="text" id="speakbox" onkeypress="if(event.keyCode==13)return speakController(this);" style="width:75px;background:#000;color:#0F0;">
+</td><td><!-- camera -->
+  <img name="campic" id="campic" src="" width=480 height=360 alt="cam">
+</td></tr></table>
+</body>
+</html>
