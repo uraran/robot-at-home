@@ -1,0 +1,4 @@
+This project is about building a robot out of simple and cheap parts. It's about giving your netbook wheels, about creating a versatile real world platform to play with computervision and ai.
+It aims to be a great project you can do together with kids to teach them programming basics on a real thing instead of a lame simulated turtle, or with fellow hackers while enjoying a beer and just having fun together.
+It will give you the power to enable your friends to log into your living room. They can drive around, see through the cam of the robot, talk and listen using the soundsystem, while sitting hundred of miles away on their couch.
+Share the spirit, read the blog: http://nexno.blogspot.com/
